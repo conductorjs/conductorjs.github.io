@@ -52,7 +52,33 @@ available at github.com/conductorjs/website</a>.</p>
 
 <p>After you&rsquo;ve downloaded Conductor.js, include the hybrid JavaScript/HTML
 file in your HTML page like this:</p>
-<pre class="highlight html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/libs/conductor.js.html&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<pre class="highlight html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/dist/conductor-0.2.0.js.html&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre>
+<h2>Setting Up Conductor</h2>
+
+<p>To add a Conductor cards to your application, first create a new
+instance of <code>Conductor</code>:</p>
+<pre class="highlight javascript"><span class="kd">var</span> <span class="nx">conductor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Conductor</span><span class="p">();</span>
+</pre>
+<p><span class="note">Note</span> Because Conductor needs to provide a copy
+of the Conductor library to the cards you create, it assumes that it
+can find a copy at the absolute URL <code>/dist/conductor-02.0.js.html</code>.  If
+your copy of Conductor is at a different URL, specify that URL using the
+<code>conductorURL</code> option:</p>
+<pre class="highlight javascript"><span class="kd">var</span> <span class="nx">conductor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Conductor</span><span class="p">({</span>
+  <span class="na">conductorURL</span><span class="p">:</span> <span class="s1">'/js/libs/conductor.js.html'</span>
+<span class="p">});</span>
+</pre>
+<h2>Creating a Card</h2>
+
+<p>Once you have created the Conductor instance, load a card by
+passing the URL to the card&rsquo;s JavaScript to the <code>load</code> method:</p>
+<pre class="highlight javascript"><span class="kd">var</span> <span class="nx">card</span> <span class="o">=</span> <span class="nx">conductor</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;/cards/test_card.js&quot;</span><span class="p">);</span>
+</pre>
+<p>Once you have created the card object, tell it to render itself into the
+DOM by calling the <code>appendTo</code> method with the <code>DOMElement</code> into which it
+should render:</p>
+<pre class="highlight javascript"><span class="nx">card</span><span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'card'</span><span class="p">));</span>
 </pre>
       </div>
     </div>
